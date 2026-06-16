@@ -226,6 +226,8 @@ lib/
 
 ## 📮 联系方式
 
-- **作者**：[@zzy00747](https://github.com/zzy00747)
-- **邮箱**：voidsec@126.com
+- **原作者**：[@wyvern1723](https://github.com/wyvern1723)
+  - 邮箱：wyvern1723@outlook.com
+- **二次开发作者**：[@zzy00747](https://github.com/zzy00747)
+  - 邮箱：voidsec@126.com / voidsec@foxmail.com
 - **项目仓库**：[zzy00747/SachetNew](https://github.com/zzy00747/SachetNew)
