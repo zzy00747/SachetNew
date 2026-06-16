@@ -32,6 +32,7 @@ class TwTzggParser extends NoticeParserBase {
 
   @override
   List<CampusNotice> parse(Document document, String sourceUrl) {
+    final String crawlTime = DateTime.now().toUtc().toIso8601String();
     final Element? listUl = document.querySelector('ul.text-list2');
     if (listUl == null) {
       return [];
@@ -39,12 +40,12 @@ class TwTzggParser extends NoticeParserBase {
 
     final List<Element> items = listUl.querySelectorAll('li');
     return items
-        .map((li) => _parseItem(li, sourceUrl))
+        .map((li) => _parseItem(li, sourceUrl, crawlTime))
         .whereType<CampusNotice>()
         .toList();
   }
 
-  CampusNotice? _parseItem(Element li, String sourceUrl) {
+  CampusNotice? _parseItem(Element li, String sourceUrl, String crawlTime) {
     final Element? link = li.querySelector('a');
     if (link == null) return null;
 
@@ -52,7 +53,6 @@ class TwTzggParser extends NoticeParserBase {
     if (href == null || href.isEmpty) return null;
 
     final String detailUrl = resolveUrl(href, sourceUrl);
-    final String id = extractIdFromUrl(detailUrl);
 
     final Element? dateBox = link.querySelector('div.date2');
     final String day = cleanText(dateBox?.querySelector('p')?.text ?? '');
@@ -60,19 +60,15 @@ class TwTzggParser extends NoticeParserBase {
 
     final Element? infoBox = link.querySelector('div.text-list-info');
     final String title = cleanText(infoBox?.querySelector('h3')?.text ?? '');
-    final String summary = cleanText(infoBox?.querySelector('p')?.text ?? '');
 
     if (title.isEmpty) return null;
 
     return CampusNotice(
-      id: id,
       title: title,
-      summary: summary,
       date: _normalizeDate(day, month),
-      day: day,
-      month: month,
       detailUrl: detailUrl,
       sourceUrl: sourceUrl,
+      crawlTime: crawlTime,
     );
   }
 

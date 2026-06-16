@@ -32,6 +32,7 @@ class TwXnxwParser extends NoticeParserBase {
 
   @override
   List<CampusNotice> parse(Document document, String sourceUrl) {
+    final String crawlTime = DateTime.now().toUtc().toIso8601String();
     // 校内新闻的列表项直接位于 <body> 下的多个 <li> 中，
     // 先尝试从外层容器查找，再回退到 body 下所有 li。
     final Element? listContainer =
@@ -42,12 +43,12 @@ class TwXnxwParser extends NoticeParserBase {
 
     final List<Element> items = listContainer.querySelectorAll('li');
     return items
-        .map((li) => _parseItem(li, sourceUrl))
+        .map((li) => _parseItem(li, sourceUrl, crawlTime))
         .whereType<CampusNotice>()
         .toList();
   }
 
-  CampusNotice? _parseItem(Element li, String sourceUrl) {
+  CampusNotice? _parseItem(Element li, String sourceUrl, String crawlTime) {
     final Element? link = li.querySelector('a');
     if (link == null) return null;
 
@@ -55,30 +56,20 @@ class TwXnxwParser extends NoticeParserBase {
     if (href == null || href.isEmpty) return null;
 
     final String detailUrl = resolveUrl(href, sourceUrl);
-    final String id = extractIdFromUrl(detailUrl);
 
     final String title = cleanText(link.querySelector('h3')?.text ?? '');
-    final String summary = cleanText(link.querySelector('p')?.text ?? '');
 
     if (title.isEmpty) return null;
 
     // 日期在 <a> 内的 <span> 中，格式通常为 yyyy-MM-dd
     final String dateText = findDateSpanText(link) ?? '';
-    final List<String> dateParts = dateText.split('-');
-    final String month = dateParts.length >= 2
-        ? '${dateParts[0]}-${dateParts[1]}'
-        : '';
-    final String day = dateParts.length >= 3 ? dateParts[2] : '';
 
     return CampusNotice(
-      id: id,
       title: title,
-      summary: summary,
       date: dateText,
-      day: day,
-      month: month,
       detailUrl: detailUrl,
       sourceUrl: sourceUrl,
+      crawlTime: crawlTime,
     );
   }
 }

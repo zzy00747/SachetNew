@@ -102,13 +102,11 @@ void main() {
       expect(notices, hasLength(2));
 
       final CampusNotice first = notices.first;
-      expect(first.id, '3521');
       expect(first.title, '关于在全校公开选拔2026年团属校级 学生组织负责人的通知');
-      expect(first.summary, startsWith('各二级团组织、同学们'));
-      expect(first.day, '02');
-      expect(first.month, '2026-06');
       expect(first.date, '2026-06-02');
       expect(first.detailUrl, 'https://tw.xtu.edu.cn/info/1012/3521.htm');
+      expect(first.sourceUrl, 'https://tw.xtu.edu.cn/tzgg.htm');
+      expect(first.crawlTime, isNotEmpty);
     });
 
     test('第二页 URL 应使用反向编号', () async {
@@ -151,12 +149,11 @@ void main() {
       expect(notices, hasLength(2));
 
       final CampusNotice first = notices.first;
-      expect(first.id, '3530');
       expect(first.title, startsWith('【校团委】电影鉴赏'));
       expect(first.date, '2026-06-15');
-      expect(first.day, '15');
-      expect(first.month, '2026-06');
       expect(first.detailUrl, 'https://tw.xtu.edu.cn/info/1011/3530.htm');
+      expect(first.sourceUrl, 'https://tw.xtu.edu.cn/xnxw.htm');
+      expect(first.crawlTime, isNotEmpty);
     });
   });
 
@@ -172,8 +169,9 @@ void main() {
         expect(notices, isNotEmpty);
         for (final CampusNotice notice in notices) {
           expect(notice.title, isNotEmpty);
+          expect(notice.date, isNotEmpty);
           expect(notice.detailUrl, startsWith('https://tw.xtu.edu.cn/'));
-          expect(notice.id, isNotEmpty);
+          expect(notice.crawlTime, isNotEmpty);
         }
 
         liveCrawler.dispose();
@@ -192,8 +190,9 @@ void main() {
         expect(notices, isNotEmpty);
         for (final CampusNotice notice in notices) {
           expect(notice.title, isNotEmpty);
+          expect(notice.date, isNotEmpty);
           expect(notice.detailUrl, startsWith('https://tw.xtu.edu.cn/'));
-          expect(notice.id, isNotEmpty);
+          expect(notice.crawlTime, isNotEmpty);
         }
 
         liveCrawler.dispose();
