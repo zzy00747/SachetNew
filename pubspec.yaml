@@ -6,8 +6,8 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
 version: 0.10.0+16
 
-homepage: https://github.com/zzy00747/sachet
-repository: https://github.com/zzy00747/sachet
+homepage: https://github.com/zzy00747/SachetNew
+repository: https://github.com/zzy00747/SachetNew
 
 environment:
   sdk: '>=3.2.2 <4.0.0'

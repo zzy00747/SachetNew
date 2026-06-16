@@ -12,14 +12,14 @@ const String authorMail = "voidsec@126.com";
 const String appDeveloperProfileUrl = "https://github.com/zzy00747";
 
 /// App 项目主页网址（源码仓库）
-const String appRepoUrl = "https://github.com/zzy00747/sachet";
+const String appRepoUrl = "https://github.com/zzy00747/SachetNew";
 
 /// App Releases Page 网址
-const String appReleaseUrl = "https://github.com/zzy00747/sachet/releases";
+const String appReleaseUrl = "https://github.com/zzy00747/SachetNew/releases";
 
 /// 检查应用更新的 API 地址（内容为 Github 自动生成的）
 const String appUpdateSourceUrlApiGithubCom =
-    'https://api.github.com/repos/zzy00747/sachet/releases/latest';
+    'https://api.github.com/repos/zzy00747/SachetNew/releases/latest';
 
 /// App 包名
 const String appPackageName = "io.github.zzy00747.sachet";

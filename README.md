@@ -5,11 +5,11 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/zzy00747/sachet/releases">
-    <img src="https://img.shields.io/github/v/release/zzy00747/sachet?include_prereleases&style=flat-square" alt="Release">
+  <a href="https://github.com/zzy00747/SachetNew/releases">
+    <img src="https://img.shields.io/github/v/release/zzy00747/SachetNew?include_prereleases&style=flat-square" alt="Release">
   </a>
-  <a href="https://github.com/zzy00747/sachet/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/zzy00747/sachet?style=flat-square" alt="License">
+  <a href="https://github.com/zzy00747/SachetNew/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/zzy00747/SachetNew?style=flat-square" alt="License">
   </a>
   <a href="https://flutter.dev">
     <img src="https://img.shields.io/badge/Flutter-3.24.5-02569B?style=flat-square&logo=flutter" alt="Flutter">
@@ -88,7 +88,7 @@
 
 ## ⬇️ 下载安装
 
-- **GitHub Releases**：<https://github.com/zzy00747/sachet/releases>
+- **GitHub Releases**：<https://github.com/zzy00747/SachetNew/releases>
 
 目前主要提供：
 
@@ -127,7 +127,7 @@
 ### 克隆项目
 
 ```bash
-git clone https://github.com/zzy00747/sachet.git
+git clone https://github.com/zzy00747/SachetNew.git
 cd sachet
 ```
 
