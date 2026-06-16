@@ -4,8 +4,10 @@ import 'package:html/parser.dart' show parse;
 import 'package:http/http.dart' as http;
 import 'package:sachet/models/campus_notice.dart';
 import 'package:sachet/services/notice_crawler/parsers/notice_parser.dart';
+import 'package:sachet/services/notice_crawler/parsers/jwc_article_list_parser.dart';
 import 'package:sachet/services/notice_crawler/parsers/tw_tzgg_parser.dart';
 import 'package:sachet/services/notice_crawler/parsers/tw_xnxw_parser.dart';
+import 'package:sachet/services/notice_crawler/parsers/xtu_index_parser.dart';
 
 /// 校园通知/新闻爬虫服务
 ///
@@ -20,6 +22,8 @@ class NoticeCrawlerService {
             <NoticeParser>[
               TwTzggParser(),
               TwXnxwParser(),
+              XtuIndexParser(),
+              JwcArticleListParser(),
             ];
 
   final http.Client _client;

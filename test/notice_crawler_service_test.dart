@@ -66,6 +66,46 @@ const String _xnxwSampleHtml = r'''
 </html>
 ''';
 
+const String _xtuIndexSampleHtml = r'''
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><title>通知公告</title></head>
+<body>
+  <div class="list_lb">
+    <ul>
+      <li id="line_u17_0">
+        <a href="../info/1369/24401.htm" target="_blank" title="关于做好湘潭大学2026年国家留基委青年骨干教师出国研修项目申报的通知">
+          <span>2026.06.08</span>
+          <h2>关于做好湘潭大学2026年国家留基委青年骨干教师出国研修项目申报的通知</h2>
+        </a>
+      </li>
+      <li id="line_u17_1">
+        <a href="../info/1367/24233.htm" target="_blank" title="关于开展2026年湘潭大学大型仪器开放共享评价考核工作的通知">
+          <span>2026.05.07</span>
+          <h2>关于开展2026年湘潭大学大型仪器开放共享评价考核工作的通知</h2>
+        </a>
+      </li>
+    </ul>
+  </div>
+</body>
+</html>
+''';
+
+const String _jwcArticleListSampleHtml = r'''
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><title>通知公告</title></head>
+<body>
+  <div class="articleList">
+    <UL>
+      <li><span>2026-06-15</span><a href="info/1071/4919.htm" title="关于开展2026年上学期新增文化素质课程申报工作的通知">关于开展2026年上学期新增文化素质课程申报工作的通知</a></li>
+      <li><span>2026-06-08</span><a href="info/1071/4913.htm" title="2026年湖南省教师人工智能应用案例征集活动校内遴选结果公示">2026年湖南省教师人工智能应用案例征集活动校内遴选结果公示</a></li>
+    </UL>
+  </div>
+</body>
+</html>
+''';
+
 http.Response _utf8Response(String body, {int statusCode = 200}) {
   return http.Response.bytes(
     utf8.encode(body),
@@ -157,6 +197,74 @@ void main() {
     });
   });
 
+  group('NoticeCrawlerService - 湘潭大学官网（index）', () {
+    late NoticeCrawlerService crawler;
+
+    setUp(() {
+      final http.Client mockClient = MockClient((request) async {
+        final String url = request.url.toString();
+        if (url == 'https://www.xtu.edu.cn/index/tzgg.htm' ||
+            url == 'https://www.xtu.edu.cn/index/tzgg/36.htm') {
+          return _utf8Response(_xtuIndexSampleHtml);
+        }
+        return _utf8Response('Not Found', statusCode: 404);
+      });
+      crawler = NoticeCrawlerService(client: mockClient);
+    });
+
+    tearDown(() => crawler.dispose());
+
+    test('应正确解析官网通知公告列表并转换日期格式', () async {
+      final List<CampusNotice> notices = await crawler.fetchNotices(
+        'https://www.xtu.edu.cn/index/tzgg.htm',
+      );
+
+      expect(notices, hasLength(2));
+
+      final CampusNotice first = notices.first;
+      expect(first.title,
+          '关于做好湘潭大学2026年国家留基委青年骨干教师出国研修项目申报的通知');
+      expect(first.date, '2026-06-08');
+      expect(first.detailUrl,
+          'https://www.xtu.edu.cn/info/1369/24401.htm');
+      expect(first.sourceUrl, 'https://www.xtu.edu.cn/index/tzgg.htm');
+      expect(first.crawlTime, isNotEmpty);
+    });
+  });
+
+  group('NoticeCrawlerService - 教务处（jwc）', () {
+    late NoticeCrawlerService crawler;
+
+    setUp(() {
+      final http.Client mockClient = MockClient((request) async {
+        final String url = request.url.toString();
+        if (url == 'https://jwc.xtu.edu.cn/tzgg.htm' ||
+            url == 'https://jwc.xtu.edu.cn/tzgg/68.htm') {
+          return _utf8Response(_jwcArticleListSampleHtml);
+        }
+        return _utf8Response('Not Found', statusCode: 404);
+      });
+      crawler = NoticeCrawlerService(client: mockClient);
+    });
+
+    tearDown(() => crawler.dispose());
+
+    test('应正确解析教务处通知公告列表', () async {
+      final List<CampusNotice> notices = await crawler.fetchNotices(
+        'https://jwc.xtu.edu.cn/tzgg.htm',
+      );
+
+      expect(notices, hasLength(2));
+
+      final CampusNotice first = notices.first;
+      expect(first.title, '关于开展2026年上学期新增文化素质课程申报工作的通知');
+      expect(first.date, '2026-06-15');
+      expect(first.detailUrl, 'https://jwc.xtu.edu.cn/info/1071/4919.htm');
+      expect(first.sourceUrl, 'https://jwc.xtu.edu.cn/tzgg.htm');
+      expect(first.crawlTime, isNotEmpty);
+    });
+  });
+
   group('NoticeCrawlerService 真实网络请求', () {
     test(
       '应能爬取湘潭大学团委通知公告列表',
@@ -192,6 +300,48 @@ void main() {
           expect(notice.title, isNotEmpty);
           expect(notice.date, isNotEmpty);
           expect(notice.detailUrl, startsWith('https://tw.xtu.edu.cn/'));
+          expect(notice.crawlTime, isNotEmpty);
+        }
+
+        liveCrawler.dispose();
+      },
+      skip: '需要真实网络环境，默认跳过',
+    );
+
+    test(
+      '应能爬取湘潭大学官网通知公告列表',
+      () async {
+        final NoticeCrawlerService liveCrawler = NoticeCrawlerService();
+        final List<CampusNotice> notices = await liveCrawler.fetchNotices(
+          'https://www.xtu.edu.cn/index/tzgg.htm',
+        );
+
+        expect(notices, isNotEmpty);
+        for (final CampusNotice notice in notices) {
+          expect(notice.title, isNotEmpty);
+          expect(notice.date, isNotEmpty);
+          expect(notice.detailUrl, isNotEmpty);
+          expect(notice.crawlTime, isNotEmpty);
+        }
+
+        liveCrawler.dispose();
+      },
+      skip: '需要真实网络环境，默认跳过',
+    );
+
+    test(
+      '应能爬取湘潭大学教务处通知公告列表',
+      () async {
+        final NoticeCrawlerService liveCrawler = NoticeCrawlerService();
+        final List<CampusNotice> notices = await liveCrawler.fetchNotices(
+          'https://jwc.xtu.edu.cn/tzgg.htm',
+        );
+
+        expect(notices, isNotEmpty);
+        for (final CampusNotice notice in notices) {
+          expect(notice.title, isNotEmpty);
+          expect(notice.date, isNotEmpty);
+          expect(notice.detailUrl, startsWith('https://jwc.xtu.edu.cn/'));
           expect(notice.crawlTime, isNotEmpty);
         }
 
