@@ -4,7 +4,6 @@
 
 ### 新增
 
-- 上线官方网站 [sachet.wyvernlab.com](https://sachet.wyvernlab.com)
 - 支持查看个人和其他专业的培养方案
 - 支持查看教材预订的教材信息
 - 支持隐藏逸夫楼听力教室

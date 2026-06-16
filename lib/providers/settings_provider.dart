@@ -19,7 +19,7 @@ class SettingsProvider extends ChangeNotifier {
   String get startupPage => _appSettings.startupPage ?? '/class';
   static bool get isAutoCheckUpdate => _appSettings.isAutoCheckUpdate ?? true;
   static String get appUpdateChannel =>
-      _appSettings.appUpdateChannel ?? AppUpdateChannel.wyvernlab.host;
+      _appSettings.appUpdateChannel ?? AppUpdateChannel.github.host;
   static bool get isShowAllCheckUpdateResult =>
       _appSettings.isShowAllCheckUpdateResult ?? false;
   bool get isShowPageTurnArrow => _appSettings.isShowPageTurnArrow ?? true;

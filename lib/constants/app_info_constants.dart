@@ -2,9 +2,6 @@ import 'dart:ffi';
 
 import 'package:sachet/utils/abi_utils.dart';
 
-/// App 官网
-const String appOfficialWebsiteUrl = "https://sachet.wyvernlab.com";
-
 /// 作者名称
 const String authorName = "zzy00747";
 
@@ -23,9 +20,6 @@ const String appReleaseUrl = "https://github.com/zzy00747/sachet/releases";
 /// 检查应用更新的 API 地址（内容为 Github 自动生成的）
 const String appUpdateSourceUrlApiGithubCom =
     'https://api.github.com/repos/zzy00747/sachet/releases/latest';
-
-const String appUpdateSourceUrlUpdateSachetWyvernlabCom =
-    'https://update.sachet.wyvernlab.com/latest.json';
 
 /// App 包名
 const String appPackageName = "io.github.zzy00747.sachet";

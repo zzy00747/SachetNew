@@ -66,7 +66,7 @@ String generateIcsFromSchedule({
   required List courseScheduleItemsList,
   required DateTime semesterStartDate,
   String prodId = '-//zzy00747//Sachet//ZH',
-  String domain = 'wyvernlab.com',
+  String domain = 'example.com',
 }) {
   final events = <String>[];
   final uuid = const Uuid();
@@ -182,7 +182,7 @@ Future<String?> exportExamTimeToIcs({
 String generateIcsFromExamTime({
   required List<ExamTimeResponseZF> exams,
   String prodId = '-//zzy00747//Sachet//ZH',
-  String domain = 'wyvernlab.com',
+  String domain = 'example.com',
 }) {
   final events = <String>[];
   final uuid = const Uuid();

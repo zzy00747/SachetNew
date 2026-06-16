@@ -155,23 +155,6 @@ class _AboutPageState extends State<AboutPage> {
             leading: const Align(
               widthFactor: 1,
               alignment: Alignment.centerLeft,
-              child: Icon(
-                // Icons.web,
-                Icons.web_asset,
-                // Icons.attachment,
-                // Icons.link,
-              ),
-            ),
-            title: const Text('官网'),
-            subtitle: const Text(appOfficialWebsiteUrl),
-            onTap: () => openLink(appOfficialWebsiteUrl),
-            onLongPress: () =>
-                copyToClipboard(context, appOfficialWebsiteUrl, prefix: '链接'),
-          ),
-          ListTile(
-            leading: const Align(
-              widthFactor: 1,
-              alignment: Alignment.centerLeft,
               child: Icon(Icons.person),
             ),
             title: const Text('开发者'),

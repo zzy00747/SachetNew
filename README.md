@@ -18,8 +18,6 @@
 
 **Sachet** 是一款专为**湘潭大学**学生打造的第三方校园助手应用，提供课程表、空闲教室查询、考试安排、成绩查询、培养方案等常用功能。本应用基于 [Flutter](https://flutter.dev) 开发，支持 Android、Windows、Linux 等多个平台。
 
-> 🌐 官方网站：[sachet.wyvernlab.com](https://sachet.wyvernlab.com)
-
 ---
 
 ## ✨ 功能特性
@@ -89,7 +87,6 @@
 ## ⬇️ 下载安装
 
 - **GitHub Releases**：<https://github.com/zzy00747/sachet/releases>
-- **官方网站**：<https://sachet.wyvernlab.com>
 
 目前主要提供：
 

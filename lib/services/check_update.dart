@@ -185,7 +185,7 @@ class NavigatorGlobal {
 Future<GithubLatestReleaseApiResponse> getAppLatestInfo() async {
   final preferredChannel = AppUpdateChannel.values.firstWhere(
     (channel) => channel.host == AppGlobal.appSettings.appUpdateChannel,
-    orElse: () => AppUpdateChannel.wyvernlab,
+    orElse: () => AppUpdateChannel.github,
   );
 
   final List<String> orderedUrls = [
