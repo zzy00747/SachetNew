@@ -88,7 +88,7 @@ $ flutter doctor -v
 1. **克隆项目**：
 
     ```bash
-    git clone https://github.com/wyvern1723/sachet.git
+    git clone https://github.com/zzy00747/sachet.git
     ```
 
 2. **进入项目文件夹**：
@@ -138,7 +138,7 @@ $ flutter doctor -v
 2. **克隆项目**：
 
    ```bash
-   git clone https://github.com/wyvern1723/sachet.git
+   git clone https://github.com/zzy00747/sachet.git
    ```
 
 3. **进入项目文件夹**：
@@ -251,7 +251,7 @@ $ flutter doctor -v
 1. **克隆项目**：
 
     ```bash
-    git clone https://github.com/wyvern1723/sachet.git
+    git clone https://github.com/zzy00747/sachet.git
     ```
 
 2. **进入项目文件夹**：
@@ -300,7 +300,7 @@ $ flutter doctor -v
 2. **克隆项目**：
 
     ```bash
-    git clone https://github.com/wyvern1723/sachet.git
+    git clone https://github.com/zzy00747/sachet.git
     ```
 
 3. **进入项目文件夹**：
@@ -498,4 +498,4 @@ $ flutter doctor -v
 
 ## Contact
 
-maiI: ```wyvern1723(AT)outlook[dot]com```
+maiI: ```voidsec(AT)126[dot]com```

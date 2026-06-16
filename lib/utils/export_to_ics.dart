@@ -65,7 +65,7 @@ Future<String?> exportClassScheduleToIcs({
 String generateIcsFromSchedule({
   required List courseScheduleItemsList,
   required DateTime semesterStartDate,
-  String prodId = '-//wyvern1723//Sachet//ZH',
+  String prodId = '-//zzy00747//Sachet//ZH',
   String domain = 'wyvernlab.com',
 }) {
   final events = <String>[];
@@ -181,7 +181,7 @@ Future<String?> exportExamTimeToIcs({
 /// 将考试时间数据转换为 .ics 字符串
 String generateIcsFromExamTime({
   required List<ExamTimeResponseZF> exams,
-  String prodId = '-//wyvern1723//Sachet//ZH',
+  String prodId = '-//zzy00747//Sachet//ZH',
   String domain = 'wyvernlab.com',
 }) {
   final events = <String>[];

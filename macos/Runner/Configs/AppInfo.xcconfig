@@ -8,7 +8,7 @@
 PRODUCT_NAME = Sachet
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = io.github.wyvern1723.sachet
+PRODUCT_BUNDLE_IDENTIFIER = io.github.zzy00747.sachet
 
 // The copyright displayed in application information
-PRODUCT_COPYRIGHT = Copyright © 2023 wyvern1723. All rights reserved.
+PRODUCT_COPYRIGHT = Copyright © 2023 zzy00747. All rights reserved.

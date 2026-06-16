@@ -1,118 +1,226 @@
 # Sachet
 
-<p align='center'>
-  <img alt='Sachet app icon' src='./assets/icon/icon.png' width='25%' style="border-radius:14%;"/>
-</p>
-
-<div align="center">
-  <a href="https://github.com/wyvern1723/sachet/actions"><img src="https://github.com/wyvern1723/sachet/actions/workflows/build.yml/badge.svg?branch=main" alt="GitHub Workflow Status" /></a>
-  <a href="https://github.com/wyvern1723/sachet/releases"><img src="https://img.shields.io/github/release/wyvern1723/sachet.svg?label=release" alt="Release" /></a>
-  <a href="https://flutter.dev/"><img src="https://img.shields.io/badge/Flutter-3.24.5-027DFD?logo=flutter" alt="Flutter Version 3.24.5" /></a>
-</div>
-
 <p align="center">
-  <a href="./README.md">简体中文</a> • <a href="./README_EN.md">English</a>
+  <img src="assets/icon/icon.png" width="120" alt="Sachet Logo">
 </p>
 
 <p align="center">
-  🔗 官网：<a href="https://sachet.wyvernlab.com">https://sachet.wyvernlab.com</a>
+  <a href="https://github.com/zzy00747/sachet/releases">
+    <img src="https://img.shields.io/github/v/release/zzy00747/sachet?include_prereleases&style=flat-square" alt="Release">
+  </a>
+  <a href="https://github.com/zzy00747/sachet/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/zzy00747/sachet?style=flat-square" alt="License">
+  </a>
+  <a href="https://flutter.dev">
+    <img src="https://img.shields.io/badge/Flutter-3.24.5-02569B?style=flat-square&logo=flutter" alt="Flutter">
+  </a>
 </p>
 
-## 介绍
+**Sachet** 是一款专为**湘潭大学**学生打造的第三方校园助手应用，提供课程表、空闲教室查询、考试安排、成绩查询、培养方案等常用功能。本应用基于 [Flutter](https://flutter.dev) 开发，支持 Android、Windows、Linux 等多个平台。
 
-Sachet 是一款使用 Flutter 构建的应用，旨在为湘潭大学学生提供轻快流畅的课程表，便捷的空闲教室查询，以及直观全面的成绩信息等核心教务功能以及其他便捷服务
+> 🌐 官方网站：[sachet.wyvernlab.com](https://sachet.wyvernlab.com)
 
-**核心功能：**
+---
 
-- 课程表查看
+## ✨ 功能特性
 
-- 空闲教室查询
+- 📅 **课程表**
+  - 从新正方教务系统自动导入课表
+  - 支持周视图、月视图、学期视图
+  - 支持课程卡片高度缩放手势
+  - 支持导出为 `.ics` 日历文件
+  - 支持上课前本地通知提醒
+  - 支持课程配色自定义
 
-- 考试时间查询
+- 🏫 **空闲教室**
+  - 快速查询今日/明日空闲教室
+  - 支持自选日期和自定义节次分段
+  - 可查看全天空闲状态
 
-- 成绩查询
+- 📝 **考试信息**
+  - 查询考试时间与考场安排
+  - 显示考试倒计时
+  - 支持长按复制考试信息
 
-- 聚合校内常用链接
+- 📊 **成绩查询**
+  - 查询各学期考试成绩
+  - 自动计算 GPA
+  - 支持查看成绩单 PDF
 
-**特性：**
+- 📚 **培养方案**
+  - 查看个人培养方案
+  - 支持查看其他专业培养方案
 
-- 启动速度快，秒开看课表
+- 🎨 **个性化**
+  - 支持 Android 动态取色（Material You）
+  - 可选 Material Design 2 / Material Design 3
+  - 多种导航方式：底部导航栏、侧边导航栏、抽屉导航栏
+  - 自定义主题色、页面过渡动画
 
-- 免费开源
+- 🔒 **安全与隐私**
+  - 账号密码本地加密存储
+  - 不主动收集任何个人信息
+  - 直接与教务系统服务器通信
 
-- 遵循 Material Design 设计规范，支持动态取色与预测性返回手势
+---
 
-- 用户信息只发送到教务系统的服务器，严格保护隐私
+## 📸 应用截图
 
-- 支持将课程表导出为 .ics 文件，可导入各类日历应用
-
-- 相比教务系统，查询空闲教室更直观、更高效
-
-- 跨平台（支持 Android、Windows、Linux，目前仅发布 Android 版本，如需 Windows 或 Linux 版本欢迎 [联系我](#contact) 或提交 [Issue](https://github.com/wyvern1723/sachet/issues) 反馈。[README_DEV.md](./README_DEV.md) 提供了各平台的构建指南，有兴趣的开发者也可自行构建）
-
-## 应用截图
-
-<p align='center'>
-  <img src='docs/app-screenshots/class_schedule.png' alt='课程表页面截图' width='23%'/>
-  <img src='docs/app-screenshots/cultivate_plan.png' alt='培养方案页面截图' width='23%'/>
-  <img src='docs/app-screenshots/free_classroom_page.png' alt='空闲教室页面截图' width='23%'/>
-  <img src='docs/app-screenshots/free_classroom_filter.png' alt='空闲教室页面（筛选功能展示）截图' width='23%'/>
+<p align="center">
+  <img src="docs/app-screenshots/class_schedule.png" width="200" alt="课程表">
+  <img src="docs/app-screenshots/free_classroom_page.png" width="200" alt="空闲教室">
+  <img src="docs/app-screenshots/exam_time_page.png" width="200" alt="考试信息">
+  <img src="docs/app-screenshots/grade_page.png" width="200" alt="成绩查询">
 </p>
 
-<p align='center'>
-  <img src='docs/app-screenshots/grade_page.png' alt='成绩查询页面截图' width='23%'/>
-  <img src='docs/app-screenshots/grade_page_details.png' alt='成绩查询页面（显示详细信息）截图' width='23%'/>
-  <img src='docs/app-screenshots/exam_time_page.png' alt='考试时间页面截图' width='23%'/>
-  <img src='docs/app-screenshots/login_page.png' alt='登录页面截图' width='23%'/>
+<p align="center">
+  <img src="docs/app-screenshots/cultivate_plan.png" width="200" alt="培养方案">
+  <img src="docs/app-screenshots/grade_page_details.png" width="200" alt="成绩详情">
+  <img src="docs/app-screenshots/free_classroom_filter.png" width="200" alt="空闲教室筛选">
+  <img src="docs/app-screenshots/theme_settings.png" width="200" alt="主题设置">
 </p>
 
-## 下载
+<p align="center">
+  <img src="docs/app-screenshots/login_page.png" width="200" alt="登录页面">
+</p>
 
-| 平台 | 安装包 |
-| --- | --- |
-| Android（安卓） | [APK(arm64-v8a)](https://github.com/wyvern1723/sachet/releases/download/v0.10.0/sachet-v0.10.0-arm64-v8a.apk) |
+---
 
-[查看所有版本(Releases)](https://github.com/wyvern1723/sachet/releases/latest) · [更新日志(CHANGELOG)](./CHANGELOG.md)
+## ⬇️ 下载安装
 
-> 本项目 [正式版发布](https://github.com/wyvern1723/sachet/releases) 频率较低。如需体验最新功能，可前往 [Actions](https://github.com/wyvern1723/sachet/actions) 下载最新构建版本（需登录 Github 账号）。
+- **GitHub Releases**：<https://github.com/zzy00747/sachet/releases>
+- **官方网站**：<https://sachet.wyvernlab.com>
 
-## Contact
+目前主要提供：
 
-✉️ emaiI: `wyvern1723(AT)outlook[dot]com`
+- Android APK（按 ABI 拆分，包含 `arm64-v8a`、`armeabi-v7a` 等）
+- Windows 安装包/可执行文件
+- Linux 可执行文件
 
-如您有以下需求，欢迎通过以上邮箱联系我（熟悉 Github 的用户也可提交 [Issue](https://github.com/wyvern1723/sachet/issues) ）：
+> **注意**：本应用为第三方独立开发，与湘潭大学官方机构无关。
 
-- 反馈 Bug 或使用问题
+---
 
-- 提出功能建议
+## 🛠️ 技术栈
 
-- 咨询开发环境搭建
+- **框架**：[Flutter](https://flutter.dev) 3.24.5
+- **开发语言**：Dart 3.5.4
+- **状态管理**：[Provider](https://pub.dev/packages/provider)
+- **网络请求**：[Dio](https://pub.dev/packages/dio)、[http](https://pub.dev/packages/http)
+- **数据解析**：[html](https://pub.dev/packages/html)
+- **本地存储**：`shared_preferences`、`flutter_secure_storage`、`path_provider`
+- **本地通知**：[flutter_local_notifications](https://pub.dev/packages/flutter_local_notifications)
+- **应用内 WebView**：[flutter_inappwebview](https://pub.dev/packages/flutter_inappwebview)
+- **动态取色**：[dynamic_color](https://pub.dev/packages/dynamic_color)
+- **PDF 查看**：[pdfx](https://pub.dev/packages/pdfx)
 
-## 给开发者
+---
 
-Flutter version: 3.24.5
+## 🚀 快速开始
 
-湘潭大学在 `2024-2025 学年 第 2 学期` 之前使用 [强智教务系统](https://jwxt.xtu.edu.cn/jsxsd/)，自 `2025-2026 学年 第 1 学期` 起切换至 [正方教务系统(版本V-9.0)](https://jw.xtu.edu.cn/jwglxt/)
+### 环境要求
 
-- 正方教务系统相关核心代码: [lib/services/zhengfang_jwxt/](./lib/services/zhengfang_jwxt/) (目前已实现：登录、获取个人课表、培养方案、空闲教室、考试成绩、考试时间、绩点排名、成绩单 PDF、预订教材信息)
+- **Flutter**: 3.24.5（建议使用 [FVM](https://fvm.app) 管理版本）
+- **Dart**: 3.5.4
+- **JDK**: 17
+- **Android SDK**: 35（如需要编译 Android 版本）
 
-> [!NOTE]
-> 当前代码已移除强智教务系统相关文件。如需查看历史代码，可通过以下方式：
->
-> - 访问 [v0.4.0 版本代码](https://github.com/wyvern1723/sachet/tree/v0.4.0)
-> - 或克隆仓库后执行： `git checkout v0.4.0`
+### 克隆项目
 
-- 强智教务系统相关核心代码: [lib/services/qiangzhi_jwxt/ (v0.4.0)](https://github.com/wyvern1723/sachet/tree/v0.4.0/lib/services/qiangzhi_jwxt/) （实现功能：登录、获取个人课表、培养方案、空闲教室、考试成绩、考试时间）
+```bash
+git clone https://github.com/zzy00747/sachet.git
+cd sachet
+```
 
-- 强智教务系统登录的图片验证码自动识别：
-  - 模型文件: [assets/models/captcha_model.tflite (v0.4.0)](https://github.com/wyvern1723/sachet/blob/v0.4.0/assets/models/captcha_model.tflite) （使用 TensorFlow v2.15.0 训练生成，基于 1748 张验证码图片数据集。在 80%/20% 划分的训练/测试集上，测试准确率达到 100%。最终模型使用全部数据集重新训练生成）
+### 安装依赖
 
-  - 调用代码: [lib/services/qiangzhi_jwxt/login/captcha_recognizer.dart (v0.4.0)](https://github.com/wyvern1723/sachet/blob/v0.4.0/lib/services/qiangzhi_jwxt/login/captcha_recognizer.dart)
+```bash
+flutter pub get
+```
 
-开发环境配置和项目构建：
+### 运行应用
 
-- [README_DEV](./README_DEV.md)
+```bash
+flutter run
+```
 
-## License （许可证）
+### 构建 Release 版本
 
-[MIT License](./LICENSE)
+#### Android APK
+
+```bash
+flutter build apk --release --target-platform android-arm64
+```
+
+#### Windows
+
+```bash
+flutter build windows
+```
+
+#### Linux
+
+```bash
+flutter build linux
+```
+
+> 更详细的构建说明、平台依赖和常见问题，请参考 [`README_DEV.md`](./README_DEV.md)。
+
+---
+
+## 📁 项目结构
+
+```
+lib/
+├── constants/        # 常量（应用信息、主题色、URL 等）
+├── models/           # 数据模型
+├── pages/            # 应用页面
+├── providers/        # Provider 状态管理
+├── services/         # 业务服务（登录、教务数据获取等）
+├── utils/            # 工具类与封装
+└── widgets/          # 可复用组件
+```
+
+更多细节请参阅 [`README_DEV.md`](./README_DEV.md) 中的项目文件树说明。
+
+---
+
+## 📜 更新日志
+
+详见 [`CHANGELOG.md`](./CHANGELOG.md)。
+
+---
+
+## 🤝 贡献
+
+欢迎提交 Issue 和 Pull Request！
+
+1. Fork 本仓库
+2. 创建你的特性分支：`git checkout -b feature/AmazingFeature`
+3. 提交改动：`git commit -m 'Add some AmazingFeature'`
+4. 推送分支：`git push origin feature/AmazingFeature`
+5. 创建 Pull Request
+
+---
+
+## ⚠️ 免责声明
+
+1. 本软件由第三方独立开发，仅调用教务系统服务器的数据，**与湘潭大学官方机构无关**。
+2. 本软件**不主动收集任何个人信息**，通过加密协议直接与教务系统通信。账号信息在本地加密存储，**不上传至任何第三方服务器**。
+3. 本软件**提供的信息仅供参考，不保证实时性或准确性**，请以官方平台的数据为准。
+4. 本软件仅用于信息查询，所有操作均不涉及数据修改或上传。
+5. 本软件为免费且开源软件，遵循 [MIT 协议](https://opensource.org/license/mit) 发布，**对应用的运行情况不作任何形式的担保**。
+
+---
+
+## 📄 许可证
+
+本项目基于 [MIT 许可证](./LICENSE) 开源。
+
+---
+
+## 📮 联系方式
+
+- **作者**：[@zzy00747](https://github.com/zzy00747)
+- **邮箱**：voidsec@126.com
+- **项目仓库**：[https://github.com/zzy00747/sachet](https://github.com/zzy00747/sachet)
