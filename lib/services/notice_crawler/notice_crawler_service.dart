@@ -1,3 +1,5 @@
+import 'dart:convert' show utf8;
+
 import 'package:html/parser.dart' show parse;
 import 'package:http/http.dart' as http;
 import 'package:sachet/models/campus_notice.dart';
@@ -73,7 +75,7 @@ class NoticeCrawlerService {
     }
   }
 
-  /// 拉取原始 HTML
+  /// 拉取原始 HTML 并按 UTF-8 解码（兼容 BOM）
   Future<String> _fetchHtml(String url) async {
     final Uri uri = Uri.parse(url);
     final http.Response response = await _client.get(uri).timeout(_timeout);
@@ -85,7 +87,17 @@ class NoticeCrawlerService {
       );
     }
 
-    return response.body;
+    // 站点实际使用 UTF-8 编码并带 BOM，但 HTTP Header 可能未声明 charset，
+    // 直接使用 response.body 会按 Latin1 解码导致中文乱码，因此手动解码。
+    List<int> bytes = response.bodyBytes;
+    // 去除 UTF-8 BOM（EF BB BF）
+    if (bytes.length >= 3 &&
+        bytes[0] == 0xEF &&
+        bytes[1] == 0xBB &&
+        bytes[2] == 0xBF) {
+      bytes = bytes.sublist(3);
+    }
+    return utf8.decode(bytes, allowMalformed: true);
   }
 
   void dispose() {
