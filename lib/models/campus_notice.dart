@@ -31,6 +31,16 @@ class CampusNotice {
         'crawlTime': crawlTime,
       };
 
+  factory CampusNotice.fromJson(Map<String, dynamic> json) {
+    return CampusNotice(
+      title: json['title'] as String? ?? '',
+      date: json['date'] as String? ?? '',
+      detailUrl: json['detailUrl'] as String? ?? '',
+      sourceUrl: json['sourceUrl'] as String? ?? '',
+      crawlTime: json['crawlTime'] as String? ?? '',
+    );
+  }
+
   @override
   String toString() {
     return 'CampusNotice{title: $title, date: $date, detailUrl: $detailUrl, crawlTime: $crawlTime}';

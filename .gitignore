@@ -49,3 +49,6 @@ app.*.map.json
 # User Defines
 /scripts/local.signing.env
 /scripts/build-release-apks.sh
+
+# Session archives
+session_*.zip

@@ -48,7 +48,7 @@ class _MonthCountDropdownMenuState extends State<MonthCountDropdownMenu> {
       ),
       menuStyle: const MenuStyle(),
       requestFocusOnTap: false,
-      inputDecorationTheme: const InputDecorationTheme(
+      inputDecorationTheme: const InputDecorationThemeData(
         filled: false,
         border: UnderlineInputBorder(borderSide: BorderSide.none),
       ),

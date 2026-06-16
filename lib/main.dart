@@ -7,6 +7,7 @@ import 'package:sachet/pages/profile_page.dart';
 import 'package:sachet/pages/with_navbar_view.dart';
 import 'package:sachet/utils/app_global.dart';
 import 'package:sachet/providers/course_card_settings_provider.dart';
+import 'package:sachet/providers/notice_crawler_provider.dart';
 import 'package:sachet/providers/screen_nav_provider.dart';
 import 'package:sachet/providers/settings_provider.dart';
 import 'package:sachet/providers/theme_provider.dart';
@@ -15,6 +16,7 @@ import 'package:sachet/pages/class_page.dart';
 import 'package:sachet/pages/home_page.dart';
 import 'package:sachet/pages/settings_page.dart';
 import 'package:sachet/pages/about_page.dart';
+import 'package:sachet/pages/home_child_pages/notice_page/notice_list_page.dart';
 import 'package:sachet/services/check_update.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -46,6 +48,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => ZhengFangUserProvider()..init()),
         ChangeNotifierProvider(create: (_) => CourseCardSettingsProvider()),
         ChangeNotifierProvider(create: (_) => ScreenNavProvider()),
+        ChangeNotifierProvider(create: (_) => NoticeCrawlerProvider()),
       ],
       child: Builder(builder: (context) {
         // 强制初始化所有需要提前加载的 Provider
@@ -154,6 +157,7 @@ class MyApp extends StatelessWidget {
         '/profile': (context) => ProfilePage(),
         '/navBarView': (context) => WithNavigationBarView(),
         '/intro': (context) => IntroScreen(),
+        '/noticeList': (context) => const NoticeListPage(),
       },
     );
   }

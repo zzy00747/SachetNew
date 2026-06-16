@@ -7,6 +7,7 @@ import 'package:sachet/pages/home_child_pages/gpa_page_zf.dart';
 import 'package:sachet/pages/home_child_pages/grade_page_zf.dart';
 import 'package:sachet/pages/home_child_pages/reserve_textbook_page/reserve_textbook_page_zf.dart';
 import 'package:sachet/pages/home_child_pages/score_pdf_page_zf.dart';
+import 'package:sachet/pages/home_child_pages/notice_page/notice_list_page.dart';
 import 'package:sachet/utils/app_global.dart';
 import 'package:sachet/providers/screen_nav_provider.dart';
 import 'package:sachet/pages/home_child_pages/free_classroom_page_zf.dart';
@@ -163,6 +164,14 @@ class HomePage extends StatelessWidget {
                     const SizedBox(height: 10),
                     Row(
                       children: [
+                        Expanded(
+                          child: CardWidget(
+                            title: '校园通知',
+                            icon: Icons.campaign_rounded,
+                            page: const NoticeListPage(),
+                          ),
+                        ),
+                        const SizedBox(width: 8),
                         Expanded(
                           child: CardWidget(
                             title: '培养方案',

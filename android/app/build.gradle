@@ -1,6 +1,6 @@
 plugins {
     id "com.android.application"
-    id "kotlin-android"
+    id "org.jetbrains.kotlin.android" version "2.1.20"
     id "dev.flutter.flutter-gradle-plugin"
 }
 
@@ -31,9 +31,10 @@ if (keystorePropertiesFile.exists()) {
 android {
     namespace "io.github.zzy00747.sachet"
     // compileSdkVersion flutter.compileSdkVersion
-    compileSdkVersion 35
+    compileSdkVersion 36
+    buildToolsVersion "36.1.0"
     // ndkVersion flutter.ndkVersion
-    ndkVersion = "26.1.10909125"
+    ndkVersion = "28.2.13676358"
 
     compileOptions {
         coreLibraryDesugaringEnabled true
