@@ -79,7 +79,14 @@ class NoticeCrawlerProvider extends ChangeNotifier {
   /// 下拉刷新：重新爬取第一页并增量合并
   Future<void> refresh() async {
     if (_isRefreshing) return;
+    await _doRefresh();
+  }
 
+  /// 实际执行刷新，由 [refresh] 与 [_loadCacheAndRefreshIfNeeded] 共享。
+  ///
+  /// 注意：调用方需自行保证并发安全（例如 [_loadCacheAndRefreshIfNeeded]
+  /// 已先设置 _isRefreshing），本方法只负责刷新数据并在 finally 中重置状态。
+  Future<void> _doRefresh() async {
     _isRefreshing = true;
     _errorMessage = null;
     notifyListeners();
@@ -151,7 +158,7 @@ class NoticeCrawlerProvider extends ChangeNotifier {
               const Duration(minutes: 30);
 
       if (shouldRefresh) {
-        await refresh();
+        await _doRefresh();
       } else {
         _isRefreshing = false;
         notifyListeners();
