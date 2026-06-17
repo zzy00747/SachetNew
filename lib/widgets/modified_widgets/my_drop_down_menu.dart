@@ -122,7 +122,7 @@ class MyDropdownMenu<T> extends StatefulWidget {
   /// Defines the default appearance of [InputDecoration] to show around the text field.
   ///
   /// By default, shows a outlined text field.
-  final InputDecorationThemeData? inputDecorationTheme;
+  final InputDecorationTheme? inputDecorationTheme;
 
   /// The [MenuStyle] that defines the visual attributes of the menu.
   ///
@@ -497,7 +497,7 @@ class _MyDropdownMenuState<T> extends State<MyDropdownMenu<T>> {
           maximumSize: WidgetStatePropertyAll<Size>(
               Size(double.infinity, widget.menuHeight!)));
     }
-    final InputDecorationThemeData effectiveInputDecorationTheme =
+    final InputDecorationTheme effectiveInputDecorationTheme =
         widget.inputDecorationTheme ??
             theme.inputDecorationTheme ??
             defaults.inputDecorationTheme!;
@@ -883,7 +883,7 @@ class _DropdownMenuDefaultsM3 extends DropdownMenuThemeData {
   }
 
   @override
-  InputDecorationThemeData? get inputDecorationTheme {
-    return const InputDecorationThemeData(border: OutlineInputBorder());
+  InputDecorationTheme? get inputDecorationTheme {
+    return const InputDecorationTheme(border: OutlineInputBorder());
   }
 }

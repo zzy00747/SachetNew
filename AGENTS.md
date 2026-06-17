@@ -50,7 +50,7 @@
 - **Flutter**: 3.24.5（强烈建议使用 [FVM](https://fvm.app) 管理，项目根目录已提供 `.fvmrc`）
 - **Dart**: 3.5.4
 - **JDK**: 17
-- **Android SDK**: 35（如需编译 Android）
+- **Android SDK**: 36（如需编译 Android；当前工程配置 `compileSdkVersion 36`、`buildToolsVersion 36.1.0`，向下兼容 API 35）
 - **Android Studio / VS Code**: 用于开发与调试
 - **Visual Studio 2022 + C++ ATL**（如需编译 Windows）
 - **Linux 依赖**（如需编译 Linux）：`gnome-keyring`、`libsecret-1-dev`、`libjsoncpp-dev`
@@ -355,3 +355,59 @@ flutter test
 ## 13. AI 协作原则
 
 - 当遇到长时间无法解决的环境或构建问题时，**不要无限次尝试**，应及时把当前状况、已尝试的方案和剩下的阻塞点反馈给用户，由用户决策或提供更合适的环境/信息。
+
+---
+
+## 14. 代码修改与新功能同步更新清单
+
+每次修改代码或添加新功能时，除了直接的业务文件外，还应同步检查并更新以下内容。
+
+### 14.1 业务代码相关
+
+| 改动类型 | 需要同步检查/更新的位置 |
+|---|---|
+| 新增或修改页面 | `lib/pages/...` 对应页面、`lib/providers/...` 对应 Provider |
+| 新增或修改教务功能 | `lib/services/zhengfang_jwxt/...` 对应服务、`lib/services/zhengfang_jwxt/zhengfang_jwxt.dart` 顶层聚合类 |
+| 新增接口/常量 | `lib/constants/url_constants.dart`、`lib/constants/...` |
+| 新增本地存储/枚举 | `lib/models/enums/...`、`lib/utils/storage/...` |
+| 新增可复用组件 | `lib/widgets/...` |
+
+### 14.2 文档与配置
+
+- **`CHANGELOG.md`** — 功能或修复对用户可见时，应补充一条变更记录。
+- **`AGENTS.md`** — 项目结构、接口分层、构建方式或协作约定发生变化时同步更新。
+- **`README.md` / `README_DEV.md`** — 功能说明、部署方式、依赖变化等需要同步说明。
+- **`pubspec.yaml`** — 升级版本号、新增/升级依赖时修改（版本号格式：`version: 0.10.0+16`）。
+
+### 14.3 测试
+
+- `test/` 下相关测试文件。
+- 新增功能建议补充对应单元测试；修改功能应保证现有测试通过。
+
+### 14.4 提交前检查
+
+1. 运行测试：`flutter test`
+2. 运行静态分析：`flutter analyze --no-fatal-infos --no-fatal-warnings`
+3. 使用 Conventional Commits 规范提交：
+
+   ```bash
+   git commit -m "feat: 新增 xxx 功能"
+   git commit -m "fix: 修复 xxx 问题"
+   git commit -m "docs: 更新 xxx 文档"
+   git commit -m "refactor: 重构 xxx 模块"
+   ```
+
+### 14.5 示例：新增一个教务功能
+
+以新增“教材预订”功能为例：
+
+1. 新建服务目录：`lib/services/zhengfang_jwxt/reserve_textbook/...`
+2. 在 `lib/services/zhengfang_jwxt/zhengfang_jwxt.dart` 中暴露服务
+3. 新增页面：`lib/pages/home_child_pages/reserve_textbook_page.dart`
+4. 新增 Provider：`lib/providers/reserve_textbook_provider.dart`
+5. 添加相关常量/URL：`lib/constants/url_constants.dart`
+6. 若版本或依赖有变化，更新 `pubspec.yaml`
+7. 更新 `CHANGELOG.md`
+8. 运行 `flutter test` 与 `flutter analyze`
+9. 按规范提交：`git commit -m "feat: 新增教材预订查询"`
+
