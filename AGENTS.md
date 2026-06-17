@@ -57,6 +57,20 @@
 
 VS Code 设置中已经指定了 FVM 路径：`.fvm/versions/3.24.5`。
 
+### 3.1 国内镜像配置（可选）
+
+如果默认官方源下载 Flutter 引擎或 Dart 包较慢，可配置以下环境变量使用国内镜像：
+
+```bash
+export FLUTTER_STORAGE_BASE_URL="https://storage.flutter-io.cn"
+export PUB_HOSTED_URL="https://pub.flutter-io.cn"
+```
+
+> 注意：
+> - `FLUTTER_STORAGE_BASE_URL` 用于 Flutter SDK / 引擎下载；
+> - `PUB_HOSTED_URL` 用于 `pub` 包下载。
+> - 部分镜像（如清华镜像）可能未同步某些 Flutter 引擎版本，导致 `flutter build apk` 时出现 `flutter_embedding_release` / `arm64_v8a_release` 404。此时可临时取消上述环境变量，改用官方源重新下载引擎缓存。
+
 ---
 
 ## 4. 构建与运行
