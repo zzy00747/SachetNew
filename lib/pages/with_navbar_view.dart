@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
 import 'package:sachet/models/nav_destination.dart';
 import 'package:sachet/pages/class_page.dart';
+import 'package:sachet/pages/home_child_pages/notice_page/notice_list_page.dart';
 import 'package:sachet/pages/home_page.dart';
 import 'package:sachet/pages/profile_page.dart';
 import 'package:sachet/pages/settings_page.dart';
@@ -10,7 +11,7 @@ import 'package:sachet/providers/screen_nav_provider.dart';
 import 'package:sachet/widgets/utils_widgets/nav_bottom.dart';
 import 'package:sachet/widgets/utils_widgets/nav_side.dart';
 
-const List<String> _routeNames = ['/class', '/home', '/profile'];
+const List<String> _routeNames = ['/class', '/home', '/notice', '/profile'];
 
 const List<NavDestination> _destinations = <NavDestination>[
   NavDestination(
@@ -27,6 +28,12 @@ const List<NavDestination> _destinations = <NavDestination>[
       selectedIcon: Icon(Icons.apps_outlined),
       page: HomePage(),
       routeName: '/home'),
+  NavDestination(
+      label: '校园通知',
+      icon: Icon(Icons.campaign_outlined),
+      selectedIcon: Icon(Icons.campaign_rounded),
+      page: NoticeListPage(),
+      routeName: '/notice'),
   NavDestination(
       label: '我',
       icon: Icon(Icons.person_outlined),
@@ -156,6 +163,7 @@ class _WithNavigationBarViewState extends State<WithNavigationBarView> {
                 child: [
                   ClassPage(),
                   HomePage(),
+                  NoticeListPage(),
                   ProfilePage(),
                 ][currentPageIndex],
               ),

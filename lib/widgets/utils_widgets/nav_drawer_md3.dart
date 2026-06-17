@@ -13,14 +13,22 @@ class NavDrawerMD3 extends StatefulWidget {
 }
 
 class _NavDrawerMD3State extends State<NavDrawerMD3> {
-  final List _routeNames = ['/class', '/home', '/settings', '/about'];
+  final List _routeNames = [
+    '/class',
+    '/home',
+    '/notice',
+    '/settings',
+    '/about'
+  ];
 
   Future _handleScreenChanged(BuildContext context, String routeName) async {
     if (ScreenNavProvider.currentPage == routeName) {
       Navigator.pop(context);
       return;
     }
-    if (routeName == '/class' || routeName == '/home') {
+    if (routeName == '/class' ||
+        routeName == '/home' ||
+        routeName == '/notice') {
       context.read<ScreenNavProvider>().setCurrentPage(routeName);
 
       Navigator.pop(context);

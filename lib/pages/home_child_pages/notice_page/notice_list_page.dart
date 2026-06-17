@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sachet/models/campus_notice.dart';
+import 'package:sachet/models/enums/nav_type.dart';
 import 'package:sachet/providers/notice_crawler_provider.dart';
+import 'package:sachet/providers/screen_nav_provider.dart';
+import 'package:sachet/providers/settings_provider.dart';
+import 'package:sachet/utils/app_global.dart';
 import 'package:sachet/pages/home_child_pages/notice_page/notice_detail_page.dart';
+import 'package:sachet/widgets/utils_widgets/nav_drawer.dart';
 
 /// 校园通知列表页
 ///
@@ -41,69 +46,85 @@ class _NoticeListPageState extends State<NoticeListPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('校园通知'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.refresh),
-            tooltip: '刷新',
-            onPressed: () {
-              context.read<NoticeCrawlerProvider>().refresh();
-            },
-          ),
-        ],
-      ),
-      body: Column(
-        children: [
-          _buildSourceSelector(),
-          Expanded(
-            child: Consumer<NoticeCrawlerProvider>(
-              builder: (context, provider, child) {
-                if (provider.notices.isEmpty && provider.isRefreshing) {
-                  return const Center(child: CircularProgressIndicator());
-                }
-
-                if (provider.notices.isEmpty && provider.errorMessage != null) {
-                  return Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(provider.errorMessage!),
-                        const SizedBox(height: 16),
-                        ElevatedButton(
-                          onPressed: () => provider.refresh(),
-                          child: const Text('重试'),
-                        ),
-                      ],
-                    ),
-                  );
-                }
-
-                if (provider.notices.isEmpty) {
-                  return const Center(child: Text('暂无通知'));
-                }
-
-                return RefreshIndicator(
-                  onRefresh: () => provider.refresh(),
-                  child: ListView.builder(
-                    controller: _scrollController,
-                    physics: const AlwaysScrollableScrollPhysics(),
-                    itemCount: provider.notices.length + 1,
-                    itemBuilder: (context, index) {
-                      if (index == provider.notices.length) {
-                        return _buildLoadMoreFooter(provider);
-                      }
-
-                      final CampusNotice notice = provider.notices[index];
-                      return _buildNoticeCard(notice);
-                    },
-                  ),
-                );
+    return PopScope(
+      canPop: AppGlobal.startupPage == '/notice',
+      onPopInvokedWithResult: (bool didPop, Object? result) {
+        if (didPop) {
+          return;
+        }
+        if (SettingsProvider.navigationType == NavType.navigationDrawer.type) {
+          Navigator.of(context).pushReplacementNamed(AppGlobal.startupPage);
+        }
+        context.read<ScreenNavProvider>().setCurrentPageToStartupPage();
+      },
+      child: Scaffold(
+        drawer: SettingsProvider.navigationType == NavType.navigationDrawer.type
+            ? myNavDrawer
+            : null,
+        appBar: AppBar(
+          title: const Text('校园通知'),
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.refresh),
+              tooltip: '刷新',
+              onPressed: () {
+                context.read<NoticeCrawlerProvider>().refresh();
               },
             ),
-          ),
-        ],
+          ],
+        ),
+        body: Column(
+          children: [
+            _buildSourceSelector(),
+            Expanded(
+              child: Consumer<NoticeCrawlerProvider>(
+                builder: (context, provider, child) {
+                  if (provider.notices.isEmpty && provider.isRefreshing) {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+
+                  if (provider.notices.isEmpty &&
+                      provider.errorMessage != null) {
+                    return Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(provider.errorMessage!),
+                          const SizedBox(height: 16),
+                          ElevatedButton(
+                            onPressed: () => provider.refresh(),
+                            child: const Text('重试'),
+                          ),
+                        ],
+                      ),
+                    );
+                  }
+
+                  if (provider.notices.isEmpty) {
+                    return const Center(child: Text('暂无通知'));
+                  }
+
+                  return RefreshIndicator(
+                    onRefresh: () => provider.refresh(),
+                    child: ListView.builder(
+                      controller: _scrollController,
+                      physics: const AlwaysScrollableScrollPhysics(),
+                      itemCount: provider.notices.length + 1,
+                      itemBuilder: (context, index) {
+                        if (index == provider.notices.length) {
+                          return _buildLoadMoreFooter(provider);
+                        }
+
+                        final CampusNotice notice = provider.notices[index];
+                        return _buildNoticeCard(notice);
+                      },
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

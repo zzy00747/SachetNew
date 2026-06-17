@@ -157,6 +157,7 @@ class MyApp extends StatelessWidget {
         '/profile': (context) => ProfilePage(),
         '/navBarView': (context) => WithNavigationBarView(),
         '/intro': (context) => IntroScreen(),
+        '/notice': (context) => const NoticeListPage(),
         '/noticeList': (context) => const NoticeListPage(),
       },
     );

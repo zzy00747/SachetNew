@@ -4,6 +4,7 @@ import 'package:sachet/models/user.dart';
 import 'package:sachet/pages/utilspages/zhengfang_jwxt_login_page.dart';
 import 'package:sachet/pages/about_page.dart';
 import 'package:sachet/pages/class_page.dart';
+import 'package:sachet/pages/home_child_pages/notice_page/notice_list_page.dart';
 import 'package:sachet/pages/home_page.dart';
 import 'package:sachet/pages/settings_page.dart';
 import 'package:provider/provider.dart';
@@ -35,6 +36,12 @@ const List<NavDestination> navDrawerDestinations = <NavDestination>[
       selectedIcon: Icon(Icons.apps_outlined),
       page: HomePage(),
       routeName: '/home'),
+  NavDestination(
+      label: '校园通知',
+      icon: Icon(Icons.campaign_outlined),
+      selectedIcon: Icon(Icons.campaign_rounded),
+      page: NoticeListPage(),
+      routeName: '/notice'),
   NavDestination(
       label: '设置',
       icon: Icon(Icons.settings_outlined),

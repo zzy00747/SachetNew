@@ -19,7 +19,9 @@ class _NavDrawerMD2State extends State<NavDrawerMD2> {
       Navigator.pop(context);
       return;
     }
-    if (routeName == '/class' || routeName == '/home') {
+    if (routeName == '/class' ||
+        routeName == '/home' ||
+        routeName == '/notice') {
       context.read<ScreenNavProvider>().setCurrentPage(routeName);
 
       Navigator.pop(context);

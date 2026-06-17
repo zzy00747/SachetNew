@@ -4,7 +4,8 @@ import 'package:provider/provider.dart';
 
 enum StartupPageLabel {
   classpage('课程表', '/class'),
-  homepage('Home', '/home');
+  homepage('Home', '/home'),
+  notice('校园通知', '/notice');
 
   const StartupPageLabel(this.label, this.routeName);
   final String label;

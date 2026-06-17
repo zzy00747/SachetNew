@@ -170,6 +170,10 @@ class _IntroNavTypeScreenState extends State<IntroNavTypeScreen> {
               _buildNavDrawerItem(
                   icon: Icons.apps_outlined, label: 'Home', isSelected: false),
               _buildNavDrawerItem(
+                  icon: Icons.campaign_outlined,
+                  label: '校园通知',
+                  isSelected: false),
+              _buildNavDrawerItem(
                   icon: Icons.settings_outlined,
                   label: '设置',
                   isSelected: false),
@@ -263,6 +267,7 @@ class _IntroNavTypeScreenState extends State<IntroNavTypeScreen> {
               Icon(Icons.calendar_month,
                   size: 18, color: theme.colorScheme.primary),
               Icon(Icons.apps_outlined, size: 18, color: Colors.grey),
+              Icon(Icons.campaign_outlined, size: 18, color: Colors.grey),
               Icon(Icons.person, size: 18, color: Colors.grey),
             ],
           ),
